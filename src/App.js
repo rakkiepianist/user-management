@@ -33,7 +33,7 @@ const App = () => {
         </Header>
         <Content style={{ padding: '0 50px' }}>
           <Breadcrumb style={{ margin: '16px 0' }}>
-            <Breadcrumb.Item>User Management System</Breadcrumb.Item>
+            <Breadcrumb.Item>Hệ thống quản lý người dùng</Breadcrumb.Item>
           </Breadcrumb>
           <div style={{ background: '#fff', padding: 24, minHeight: 280 }}>
             <Switch>
