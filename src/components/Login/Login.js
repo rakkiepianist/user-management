@@ -1,10 +1,20 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Row, Col, Form, Icon, Input, Button, Checkbox } from 'antd';
+import {
+  Row,
+  Col,
+  Form,
+  Icon,
+  Input,
+  Button,
+  Checkbox,
+  Typography,
+} from 'antd';
 import './Login.css';
 
 // Component Login: Render login page
 const Login = props => {
+  const { Title } = Typography;
   const { form } = props;
   const { getFieldDecorator } = form;
 
@@ -22,6 +32,7 @@ const Login = props => {
     <div className="Login">
       <Row>
         <Col span={6} offset={9}>
+          <Title level={3}>Đăng nhập</Title>
           <Form id="login-form" onSubmit={handleSubmit}>
             <Form.Item>
               {getFieldDecorator('username', {
