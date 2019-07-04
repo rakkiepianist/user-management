@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { Row, Col, Form, Icon, Input, Button, Typography } from 'antd';
 import './Register.css';
 
@@ -137,6 +138,7 @@ const Register = props => {
               >
                 Đăng ký
               </Button>
+              Đã có tài khoản? <Link to="/login">Đăng nhập!</Link>
             </Form.Item>
           </Form>
         </Col>
