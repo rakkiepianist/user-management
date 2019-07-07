@@ -10,7 +10,7 @@ import {
   Checkbox,
   Typography,
 } from 'antd';
-import './Login.css';
+import './Login.scss';
 
 // Component Login: Render login page
 const Login = props => {

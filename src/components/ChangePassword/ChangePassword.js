@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Row, Col, Form, Icon, Input, Button, Typography } from 'antd';
-import './ChangePassword.css';
+import './ChangePassword.scss';
 
 // Component ChangePassword: Render change password page
 const ChangePassword = props => {

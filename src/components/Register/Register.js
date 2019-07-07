@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Row, Col, Form, Icon, Input, Button, Typography } from 'antd';
-import './Register.css';
+import './Register.scss';
 
 // Component Register: Render register page
 const Register = props => {

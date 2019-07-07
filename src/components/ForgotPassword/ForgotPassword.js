@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Row, Col, Form, Icon, Input, Button, Typography } from 'antd';
-import './ForgotPassword.css';
+import './ForgotPassword.scss';
 
 // Component ForgotPassword: Render forgot password page
 const ForgotPassword = props => {

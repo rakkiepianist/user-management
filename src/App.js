@@ -6,7 +6,7 @@ import Login from 'components/Login';
 import Register from 'components/Register';
 import ForgotPassword from 'components/ForgotPassword';
 import ChangePassword from 'components/ChangePassword';
-import './App.css';
+import './App.scss';
 
 const { Header, Content, Footer } = Layout;
 
