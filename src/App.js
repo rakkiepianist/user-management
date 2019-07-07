@@ -4,6 +4,7 @@ import { Layout, Menu, Breadcrumb } from 'antd';
 import Home from 'components/Home';
 import Login from 'components/Login';
 import Register from 'components/Register';
+import ForgotPassword from 'components/ForgotPassword';
 import './App.css';
 
 const { Header, Content, Footer } = Layout;
@@ -40,6 +41,7 @@ const App = () => {
               <Route path="/" exact component={Home} />
               <Route path="/login" component={Login} />
               <Route path="/register" component={Register} />
+              <Route path="/forgot_password" component={ForgotPassword} />
             </Switch>
           </div>
         </Content>
