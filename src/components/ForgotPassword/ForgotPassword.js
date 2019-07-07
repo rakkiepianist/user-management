@@ -9,7 +9,7 @@ const ForgotPassword = props => {
   const { form } = props;
   const { getFieldDecorator } = form;
 
-  // Handle submit forgot-password form
+  // Handle submit forgot password form
   const handleSubmit = e => {
     e.preventDefault();
     form.validateFields((err, values) => {
