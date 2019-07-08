@@ -1,6 +1,16 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Row, Col, Form, Icon, Input, Button, Typography } from 'antd';
+import {
+  Row,
+  Col,
+  Form,
+  Icon,
+  Input,
+  Button,
+  Typography,
+  notification,
+} from 'antd';
+import { authServices } from 'services';
 import './Register.scss';
 
 // Component Register: Render register page
@@ -12,13 +22,30 @@ const Register = props => {
   // Local state
   const [confirmDirty, setConfirmDirty] = useState(false);
 
+  // Handle register
+  const register = params => {
+    authServices.register(params).then(res => {
+      const { code, message } = res.data;
+      if (code === 'SUCCESS') {
+        notification.success({
+          message: 'Thành công',
+          description: message,
+        });
+        props.history.push('/login');
+      } else {
+        notification.error({
+          message: 'Có lỗi',
+          description: message,
+        });
+      }
+    });
+  };
+
   // Handle submit register form
   const handleSubmit = e => {
     e.preventDefault();
     form.validateFields((err, values) => {
-      if (!err) {
-        console.log('Received values of form: ', values);
-      }
+      if (!err) register(values);
     });
   };
 
@@ -58,6 +85,10 @@ const Register = props => {
                     required: true,
                     message: 'Vui lòng điền vào tên đăng nhập!',
                   },
+                  {
+                    min: 6,
+                    message: 'Tên đăng nhập phải chứa ít nhất 6 ký tự!',
+                  },
                 ],
               })(
                 <Input
@@ -74,6 +105,10 @@ const Register = props => {
                   {
                     required: true,
                     message: 'Vui lòng điền vào mật khẩu!',
+                  },
+                  {
+                    min: 8,
+                    message: 'Mật khẩu phải chứa ít nhất 8 ký tự!',
                   },
                   {
                     validator: validateToNextPassword,

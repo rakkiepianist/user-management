@@ -1,6 +1,16 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Row, Col, Form, Icon, Input, Button, Typography } from 'antd';
+import {
+  Row,
+  Col,
+  Form,
+  Icon,
+  Input,
+  Button,
+  Typography,
+  notification,
+} from 'antd';
+import { authServices } from 'services';
 import './ChangePassword.scss';
 
 // Component ChangePassword: Render change password page
@@ -9,6 +19,25 @@ const ChangePassword = props => {
   const { form } = props;
   const { getFieldDecorator } = form;
 
+  // Handle change password
+  const changePassword = params => {
+    authServices.changePassword(params).then(res => {
+      const { code, message } = res.data;
+      if (code === 'SUCCESS') {
+        notification.success({
+          message: 'Thành công',
+          description: message,
+        });
+        props.history.push('/login');
+      } else {
+        notification.error({
+          message: 'Có lỗi',
+          description: message,
+        });
+      }
+    });
+  };
+
   // Local state
   const [confirmDirty, setConfirmDirty] = useState(false);
 
@@ -16,9 +45,7 @@ const ChangePassword = props => {
   const handleSubmit = e => {
     e.preventDefault();
     form.validateFields((err, values) => {
-      if (!err) {
-        console.log('Received values of form: ', values);
-      }
+      if (!err) changePassword(values);
     });
   };
 
@@ -74,6 +101,10 @@ const ChangePassword = props => {
                   {
                     required: true,
                     message: 'Vui lòng điền vào mật khẩu mới!',
+                  },
+                  {
+                    min: 8,
+                    message: 'Mật khẩu mới phải chứa ít nhất 8 ký tự!',
                   },
                   {
                     validator: validateToNextPassword,

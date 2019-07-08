@@ -9,7 +9,9 @@ import {
   Button,
   Checkbox,
   Typography,
+  notification,
 } from 'antd';
+import { authServices } from 'services';
 import './Login.scss';
 
 // Component Login: Render login page
@@ -18,13 +20,30 @@ const Login = props => {
   const { form } = props;
   const { getFieldDecorator } = form;
 
+  // Handle login
+  const login = params => {
+    authServices.login(params).then(res => {
+      const { code, message } = res.data;
+      if (code === 'SUCCESS') {
+        notification.success({
+          message: 'Thành công',
+          description: message,
+        });
+        props.history.push('/');
+      } else {
+        notification.error({
+          message: 'Có lỗi',
+          description: message,
+        });
+      }
+    });
+  };
+
   // Handle submit login form
   const handleSubmit = e => {
     e.preventDefault();
     form.validateFields((err, values) => {
-      if (!err) {
-        console.log('Received values of form: ', values);
-      }
+      if (!err) login(values);
     });
   };
 

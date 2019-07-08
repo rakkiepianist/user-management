@@ -1,6 +1,16 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Row, Col, Form, Icon, Input, Button, Typography } from 'antd';
+import {
+  Row,
+  Col,
+  Form,
+  Icon,
+  Input,
+  Button,
+  Typography,
+  notification,
+} from 'antd';
+import { authServices } from 'services';
 import './ForgotPassword.scss';
 
 // Component ForgotPassword: Render forgot password page
@@ -9,13 +19,30 @@ const ForgotPassword = props => {
   const { form } = props;
   const { getFieldDecorator } = form;
 
+  // Handle forgot password
+  const forgotPassword = params => {
+    authServices.forgotPassword(params).then(res => {
+      const { code, message } = res.data;
+      if (code === 'SUCCESS') {
+        notification.success({
+          message: 'Thành công',
+          description: message,
+        });
+        props.history.push('/login');
+      } else {
+        notification.error({
+          message: 'Có lỗi',
+          description: message,
+        });
+      }
+    });
+  };
+
   // Handle submit forgot password form
   const handleSubmit = e => {
     e.preventDefault();
     form.validateFields((err, values) => {
-      if (!err) {
-        console.log('Received values of form: ', values);
-      }
+      if (!err) forgotPassword(values);
     });
   };
 
