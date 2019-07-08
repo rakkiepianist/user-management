@@ -40,9 +40,20 @@ const changePassword = params => {
   });
 };
 
+// Handle log out
+const logout = params => {
+  return Promise.resolve({
+    data: {
+      code: 'SUCCESS',
+      message: 'Đăng xuất thành công!',
+    },
+  });
+};
+
 export default {
   login,
   register,
   forgotPassword,
   changePassword,
+  logout,
 };

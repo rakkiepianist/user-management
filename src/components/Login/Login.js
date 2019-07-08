@@ -94,6 +94,7 @@ const Login = props => {
                 Quên mật khẩu
               </Link>
               <Button
+                id="login-btn"
                 type="primary"
                 htmlType="submit"
                 className="login-form-button"

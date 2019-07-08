@@ -167,6 +167,7 @@ const Register = props => {
             </Form.Item>
             <Form.Item>
               <Button
+                id="register-btn"
                 type="primary"
                 htmlType="submit"
                 className="register-form-button"

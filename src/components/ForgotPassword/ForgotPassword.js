@@ -92,6 +92,7 @@ const ForgotPassword = props => {
             </Form.Item>
             <Form.Item>
               <Button
+                id="forgot-password-btn"
                 type="primary"
                 htmlType="submit"
                 className="forgot-password-form-button"

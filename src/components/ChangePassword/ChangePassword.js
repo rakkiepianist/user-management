@@ -142,6 +142,7 @@ const ChangePassword = props => {
             </Form.Item>
             <Form.Item>
               <Button
+                id="change-password-btn"
                 type="primary"
                 htmlType="submit"
                 className="change-password-form-button"
